@@ -70,8 +70,8 @@ def parse_args():
 
 def run_tts(args):
     """Perform TTS inference and save the generated audio."""
-    logging.info(f"Using model from: {args.model_dir}")
-    logging.info(f"Saving audio to: {args.save_dir}")
+    # logging.info(f"Using model from: {args.model_dir}")
+    # logging.info(f"Saving audio to: {args.save_dir}")
 
     # Ensure the save directory exists
     os.makedirs(args.save_dir, exist_ok=True)
@@ -99,7 +99,7 @@ def run_tts(args):
     filename = f"{args.filename}.wav" if args.filename else f"{datetime.now().strftime('%Y%m%d%H%M%S')}.wav"
     save_path = os.path.join(args.save_dir, filename)
 
-    logging.info("Starting inference...")
+    # logging.info("Starting inference...")
 
     # Perform inference and save the output audio
     with torch.no_grad():
@@ -113,13 +113,13 @@ def run_tts(args):
         )
         sf.write(save_path, wav, samplerate=16000)
 
-    logging.info(f"Audio saved at: {save_path}")
+    # logging.info(f"Audio saved at: {save_path}")
 
 
 if __name__ == "__main__":
-    logging.basicConfig(
-        level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
-    )
+    # logging.basicConfig(
+    #     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
+    # )
 
     args = parse_args()
     run_tts(args)
